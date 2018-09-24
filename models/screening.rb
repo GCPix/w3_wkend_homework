@@ -15,7 +15,7 @@ class Screening
   def self.most_popular_view_key
     result = Ticket.find_all
     id_array = result.map{|screening| screening.screening_id}
-    #can't take credit for the next line I had to look it up.
+    #can't take credit for the next line I had to look it up. If I udnerstand it correctly 'item' is the object and basically for me that is the screening_id, the'0' is the start value for the object so that I can then increase it by 1 every time it finds the object as it iterates through?
     counts = id_array.each_with_object(Hash.new(0)){|item, count| count[item] +=1}
 
     result = counts.each{|key, value|
