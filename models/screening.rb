@@ -1,8 +1,10 @@
 
 require_relative("../db/sql_runner")
 class Screening
+
   attr_reader :id, :film_id
   attr_accessor :max_seats, :seats_available, :start_time
+
   def self.find_all()
     sql = "SELECT * FROM screenings"
     screening_list = SqlRunner.run(sql)
@@ -25,7 +27,7 @@ class Screening
         if value == x
         return key.to_i
         end}
-        #return Screening.find_screening(result) 
+        #return Screening.find_screening(result)
   end
 # I can make it work if I bring the result out as below but not if it is written as above
   def self.show_popular_screening_details

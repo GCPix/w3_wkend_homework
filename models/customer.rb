@@ -37,17 +37,9 @@ class Customer
   end
 
   def save()
-    sql = "INSERT INTO customers
-    (
-      name, funds
-    )
-    VALUES
-    (
-      $1, $2
-    )
-    RETURNING id"
+    sql = "INSERT INTO customers (name, funds) VALUES ($1, $2) RETURNING id"
     values = [@name, @funds]
-    add_customer = SqlRunner.run( sql, values ).first
+    add_customer = SqlRunner.run(sql, values).first
     @id = add_customer['id'].to_i
   end
 
