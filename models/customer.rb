@@ -51,7 +51,7 @@ class Customer
   end
 
   def list_films_seen
-    sql = "SELECT * from films INNER JOIN tickets ON films.id = tickets.film_id WHERE tickets.customer_id = $1"
+    sql = "SELECT f.* from films f INNER JOIN tickets t ON f.id = t.film_id WHERE t.customer_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
     film_list = results.map{|film| Film.new(film)}
